@@ -11,6 +11,15 @@ export default defineConfig(() => {
     build: {
       // three.js ayrı (tembel) parçada; kalan ana paket için uyarı eşiği.
       chunkSizeWarningLimit: 900,
+      rollupOptions: {
+        output: {
+          manualChunks(id) {
+            if (id.includes('node_modules')) {
+              return 'vendor';
+            }
+          }
+        }
+      }
     },
     plugins: [react(), tailwindcss()],
     resolve: {
