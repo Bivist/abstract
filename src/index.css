@@ -1,0 +1,227 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Ocean Design Tokens (Light) */
+  --bg: #eef7fb;
+  --sf: #ffffff;
+  --sf2: #dff0f7;
+  --ink: #0a2540;
+  --mu: #4a7a96;
+  --ln: #c5dfe9;
+  --pr: #0369a1;
+  --pr2: #0891b2;
+  --pr-g: linear-gradient(135deg, #0369a1 0%, #0891b2 50%, #06b6d4 100%);
+  --pr-g2: linear-gradient(135deg, #0284c7 0%, #0ea5e9 100%);
+  --no: #e11d48;
+  --ok: #059669;
+  --chip: #dbeafe;
+  --chip-ink: #0369a1;
+  --sh: 0 4px 24px rgba(3, 105, 161, 0.05), 0 1px 4px rgba(0, 0, 0, 0.06);
+  --sh-lg: 0 16px 48px rgba(3, 105, 161, 0.1), 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.dark {
+  /* Ocean Design Tokens (Dark) */
+  --bg: #020f1a;
+  --sf: #071828;
+  --sf2: #0d2236;
+  --ink: #e0f4ff;
+  --mu: #5fa8c8;
+  --ln: #0d2f45;
+  --pr: #38bdf8;
+  --pr2: #06b6d4;
+  --pr-g: linear-gradient(135deg, #0369a1 0%, #0891b2 50%, #22d3ee 100%);
+  --pr-g2: linear-gradient(135deg, #0ea5e9 0%, #22d3ee 100%);
+  --no: #f87171;
+  --ok: #34d399;
+  --chip: #0c2d44;
+  --chip-ink: #7dd3fc;
+  --sh: 0 4px 24px rgba(0, 0, 0, 0.38), 0 1px 4px rgba(0, 0, 0, 0.4);
+  --sh-lg: 0 16px 60px rgba(0, 0, 0, 0.45), 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+/* ── EASTER EGG 1: PINK ROMANCE (Asude / Açuçi / Asoude) ── */
+.easter-egg-pink {
+  --bg: #fdf2f8 !important;
+  --sf: #ffffff !important;
+  --sf2: #fce7f3 !important;
+  --ink: #831843 !important;
+  --mu: #be185d !important;
+  --ln: #fbcfe8 !important;
+  --pr: #ec4899 !important;
+  --pr2: #f43f5e !important;
+  --pr-g: linear-gradient(135deg, #ec4899 0%, #f43f5e 50%, #fb7185 100%) !important;
+  --pr-g2: linear-gradient(135deg, #f43f5e 0%, #fb7185 100%) !important;
+  --chip: #fce7f3 !important;
+  --chip-ink: #db2777 !important;
+  background-color: var(--bg) !important;
+  color: var(--ink) !important;
+}
+
+.dark.easter-egg-pink,
+.dark .easter-egg-pink {
+  --bg: #1c0814 !important;
+  --sf: #2c0d20 !important;
+  --sf2: #3f152d !important;
+  --ink: #fdf2f8 !important;
+  --mu: #f472b6 !important;
+  --ln: #551b3d !important;
+  --pr: #f472b6 !important;
+  --pr2: #fb7185 !important;
+  --chip: #3f152d !important;
+  --chip-ink: #fbcfe8 !important;
+}
+
+/* ── EASTER EGG 2: DEEP OCEAN WAVE & SWIMMING FISH (Binali / Binosh) ── */
+.easter-egg-ocean {
+  --bg: #021a2c !important;
+  --sf: #05263d !important;
+  --sf2: #093755 !important;
+  --ink: #e0faff !important;
+  --mu: #67e8f9 !important;
+  --ln: #0c4a6e !important;
+  --pr: #06b6d4 !important;
+  --pr2: #22d3ee !important;
+  --pr-g: linear-gradient(135deg, #0284c7 0%, #06b6d4 50%, #2dd4bf 100%) !important;
+  --pr-g2: linear-gradient(135deg, #06b6d4 0%, #2dd4bf 100%) !important;
+  --chip: #093755 !important;
+  --chip-ink: #38bdf8 !important;
+  background-color: var(--bg) !important;
+  color: var(--ink) !important;
+}
+
+/* Shimmering Underwater Caustics */
+.easter-egg-ocean::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(ellipse at 40% 15%, rgba(6, 182, 212, 0.16) 0%, transparent 60%),
+    radial-gradient(ellipse at 75% 75%, rgba(2, 132, 199, 0.18) 0%, transparent 60%),
+    linear-gradient(180deg, rgba(6, 182, 212, 0.05) 0%, rgba(2, 26, 44, 0.95) 100%);
+  animation: oceanPulse 8s ease-in-out infinite alternate;
+}
+
+@keyframes oceanPulse {
+  0% {
+    opacity: 0.75;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Application buttons gently swaying & bobbing like floating on sea waves */
+@keyframes oceanBob {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-4px) rotate(-1.2deg);
+  }
+  50% {
+    transform: translateY(-1px) rotate(0.8deg);
+  }
+  75% {
+    transform: translateY(-3.5px) rotate(0.4deg);
+  }
+}
+
+.easter-egg-ocean button:not(.no-bob) {
+  animation: oceanBob 4.6s ease-in-out infinite;
+}
+
+.easter-egg-ocean button:not(.no-bob):nth-of-type(2n) {
+  animation-duration: 5.4s;
+  animation-delay: -1.3s;
+}
+
+.easter-egg-ocean button:not(.no-bob):nth-of-type(3n) {
+  animation-duration: 4.9s;
+  animation-delay: -2.6s;
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg);
+  color: var(--ink);
+}
+
+.font-serif {
+  font-family: var(--font-serif);
+}
+
+.font-sans {
+  font-family: var(--font-sans);
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+/* Custom scrollbar hiding */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Subtle background bubbles effect */
+.ocean-ambient-bg::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(ellipse at 20% 10%, rgba(3, 105, 161, 0.05) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 80%, rgba(8, 145, 178, 0.05) 0%, transparent 50%);
+}
+
+@keyframes waveMove {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-wave-slow {
+  animation: waveMove 12s linear infinite;
+}
+
+.animate-wave-fast {
+  animation: waveMove 8s linear infinite reverse;
+}
+
+/* ── EASTER EGG 3: POLAR NIGHT MODE (Antarktika) ── */
+.polar-night-active {
+  --bg: #010814 !important;
+  --sf: #031224 !important;
+  --sf2: #061c36 !important;
+  --ink: #e0f2fe !important;
+  --mu: #38bdf8 !important;
+  --ln: #0c2d4a !important;
+  --pr: #2dd4bf !important;
+  --pr2: #06b6d4 !important;
+  --pr-g: linear-gradient(135deg, #059669 0%, #0d9488 50%, #06b6d4 100%) !important;
+  --pr-g2: linear-gradient(135deg, #10b981 0%, #22d3ee 100%) !important;
+  --chip: #061c36 !important;
+  --chip-ink: #67e8f9 !important;
+  background-color: var(--bg) !important;
+  color: var(--ink) !important;
+}
+
