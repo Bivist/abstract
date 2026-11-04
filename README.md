@@ -1,6 +1,6 @@
 # Abstract — Bilimi Kaydırarak Keşfet
 
-Akademik makaleleri Tinder / Reels tarzı kaydırarak keşfet, beğen, klasörle, PDF olarak çıktı al ve **bağlantıyla paylaş**.
+Akademik makaleleri kaydırarak keşfet, beğen, klasörle, PDF olarak çıktı al ve **bağlantıyla paylaş**.
 Makale verisi [OpenAlex](https://openalex.org) açık API'sinden gelir. Beğeniler, klasörler ve ayarlar varsayılan olarak yalnızca kullanıcının tarayıcısında (localStorage) saklanır. İsteğe bağlı olarak **Google veya e-posta ile giriş** yapılırsa bu veriler [Supabase](https://supabase.com) üzerinde hesaba yedeklenir ve cihazlar arasında eşitlenir (aşağıya bak). Supabase anahtarları tanımlı değilse uygulama eskisi gibi hesapsız çalışır.
 
 ## Çalıştırma
